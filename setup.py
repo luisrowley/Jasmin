@@ -81,12 +81,12 @@ def assistant(command):
         openApplication(command)
 
     elif 'telegram' in command:
-        jasminResponse('Telegram ready as always.')
         telegramProcess = subprocess.Popen("telegram")
+        jasminResponse('Telegram ready as always.')
         print 'Telegram Process: ', telegramProcess.pid
         telegramAssistant(telegramProcess)
 
-    elif 'send email' in command:
+    elif 'email' in command:
         sendEmail()
 
     # greetings and bye
@@ -120,8 +120,8 @@ def telegramAssistant(telegramProcess):
     telegramCommand = sendCommand()
 
     if 'kill telegram' in telegramCommand:
-        jasminResponse('Closing telegram Sir.')
         telegramProcess.kill()
+        jasminResponse('Closing telegram Sir.')
         print 'Telegram Process: ', telegramProcess.pid
 
     elif 'open chat' in telegramCommand:
