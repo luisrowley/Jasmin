@@ -3,32 +3,26 @@
 # Written in Python 2.7
 
 import re
-import sys
 import webbrowser
-import smtplib
 import requests
-import subprocess 
 import youtube_dl
 import vlc
 import urllib
 import urllib2
 import json
 import wikipedia
-import random
-import constants
 
+from constants import greet_list
 from bs4 import BeautifulSoup as soup
 from urllib2 import urlopen
-from src.main import sendCommand, jasminResponse, sendGreetings
+from src.main import sendCommand, jasminResponse, sendGreetings, sendBye
 from src.locales import _
 from src.weather import sayWeatherConditions
 from src.timeteller import tellCurrentTime
+from src.emailer import sendEmail
 from src.opencommands import openApplication, openTelegram
 
 def assistant(command):
-
-    # initializing word lists
-    greet_list = ["hello", "hi", "what's up", "wake up", "hey"]
     
     if _('open reddit') in command:
         reg_ex = re.search('open reddit (.*)', command)
@@ -79,32 +73,7 @@ def assistant(command):
         jasminResponse(_("I'm Jasmin, your virtual assistant"))
 
     elif _('shut down') in command:
-        bye_responses = [_("Bye Sir. Have a nice day"), 
-                         _("Until next time Sir"), 
-                         _("Be nice, bye Sir!")]
-        jasminResponse(random.choice(bye_responses))
-        sys.exit()
-
-# handle email sending
-def sendEmail():
-    jasminResponse(_('Who is the recipient?'))
-    recipient = sendCommand()
-    if 'myself' in recipient:
-        jasminResponse(_('What should I say to him?'))
-        body = sendCommand()
-        jasminResponse(_('What is the subject?'))
-        subject = sendCommand()
-        content = 'Subject: {}\n\n{}'.format(subject,body)
-
-        mail = smtplib.SMTP('smtp.gmail.com', 587)
-        mail.ehlo()
-        mail.starttls()
-        mail.login(constants.EMAIL_ADDR, constants.EMAIL_SECRET)
-        mail.sendmail(constants.EMAIL_ADDR, constants.EMAIL_RECIPIENT, content)
-        mail.close()
-        jasminResponse(_("Email has been sent successfully."))
-    else:
-        jasminResponse(_("I don't know what you mean!"))
+        sendBye()
 
 sendGreetings()
 # sayWeatherConditions(constants.DEFAULT_CITY)

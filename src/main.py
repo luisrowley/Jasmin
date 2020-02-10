@@ -4,6 +4,8 @@ from gtts import gTTS
 from locales import _
 import playsound
 import locales
+import random
+import sys
 
 # Method to interpret user voice
 def sendCommand():
@@ -40,3 +42,10 @@ def sendGreetings():
         jasminResponse(_('Hello Sir. Good afternoon'))
     else:
         jasminResponse(_('Hello Sir. Good evening'))
+
+def sendBye():
+    bye_responses = [_("Bye Sir. Have a nice day"), 
+                         _("Until next time Sir"), 
+                         _("Be nice, bye Sir!")]
+    jasminResponse(random.choice(bye_responses))
+    sys.exit()
