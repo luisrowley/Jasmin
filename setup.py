@@ -20,27 +20,15 @@ from src.locales import _
 from src.weather import sayWeatherConditions
 from src.timeteller import tellCurrentTime
 from src.emailer import sendEmail
-from src.opencommands import openApplication, openTelegram
+from src.opencommands import openApplication, openTelegram, openReddit, openWebsite
 
 def assistant(command):
-    
+
     if _('open reddit') in command:
-        reg_ex = re.search('open reddit (.*)', command)
-        url = 'https://www.reddit.com/'
-        if reg_ex:
-            subreddit = reg_ex.group(1)
-            url = url + 'r/' + subreddit
-        webbrowser.open(url)
-        jasminResponse(_('The Reddit content has been opened for you Sir.'))
+        openReddit(command)
     
     elif _('open website') in command:
-        reg_ex = re.search('open website (.+)', command)
-        if reg_ex:
-            domain = reg_ex.group(1)
-            print(domain)
-            url = url = 'https://www.' + domain
-            webbrowser.open(url)
-            jasminResponse(domain + _(' has been opened for you Sir.'))
+        openWebsite(command)
     
     elif _('launch app') in command:
         openApplication(command)
