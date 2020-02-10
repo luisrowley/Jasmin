@@ -6,3 +6,5 @@ constants.py
 
 constants.pyc
 /constants.pyc
+
+src/*.pyc
