@@ -1,5 +1,7 @@
 import speech_recognition as sr
+from time import strftime
 from gtts import gTTS
+from locales import _
 import playsound
 import locales
 
@@ -28,3 +30,13 @@ def jasminResponse(audio):
     filename = "voice.mp3"
     tts.save(filename)
     playsound.playsound(filename)
+
+# basic greeting function
+def sendGreetings():
+    day_time = int(strftime('%H'))
+    if day_time < 12:
+        jasminResponse(_('Hello Sir. Good morning'))
+    elif 12 <= day_time < 20:
+        jasminResponse(_('Hello Sir. Good afternoon'))
+    else:
+        jasminResponse(_('Hello Sir. Good evening'))

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 # Written in Python 2.7
 
-import os
 import re
 import sys
 import webbrowser
@@ -17,16 +16,14 @@ import json
 import wikipedia
 import random
 import constants
-import datetime
 
-from pyowm import OWM
 from bs4 import BeautifulSoup as soup
 from urllib2 import urlopen
-from time import strftime
-from src import telegram
-from src.main import sendCommand
-from src.main import jasminResponse
+from src.main import sendCommand, jasminResponse, sendGreetings
 from src.locales import _
+from src.weather import sayWeatherConditions
+from src.timeteller import tellCurrentTime
+from src.opencommands import openApplication, openTelegram
 
 def assistant(command):
 
@@ -55,10 +52,7 @@ def assistant(command):
         openApplication(command)
 
     elif 'telegram' in command:
-        telegramProcess = subprocess.Popen("telegram")
-        jasminResponse(_('Telegram ready as always.'))
-        print 'Telegram Process: ', telegramProcess.pid
-        telegram.telegramAssistant(telegramProcess)
+        openTelegram()
 
     elif 'email' in command:
         sendEmail()
@@ -91,37 +85,6 @@ def assistant(command):
         jasminResponse(random.choice(bye_responses))
         sys.exit()
 
-def sayWeatherConditions(city):
-    openWeatherMap = OWM(API_key='ab0d5e80e8dafb2cb81fa9e82431c1fa')
-    observation = openWeatherMap.weather_at_place(city)
-    weather = observation.get_weather()
-    status = weather.get_status()
-    temperature = weather.get_temperature(unit='celsius')
-    response = _("Current weather in %(city)s is %(status)s. The maximum temperature is %(temp_max)0.1f and the minimum temperature is %(temp_min)0.1f degree celcius") % ({
-                  'city': city, 
-                  'status': status, 
-                  'temp_max': temperature['temp_max'], 
-                  'temp_min': temperature['temp_min']
-                  })
-    jasminResponse(response)
-
-def tellCurrentTime():
-    now = datetime.datetime.now()
-    jasminResponse(_('Current time is %(hour)d hours %(mins)d minutes') % ({'hour': now.hour, 'mins': now.minute}))
-
-# function used to open system applications
-def openApplication(input):
-
-    if 'google chrome' in input:
-        os.system('google-chrome')
-        jasminResponse(_('Google Chrome was open for you Sir.'))
-    elif 'launch app' in input:
-        reg_ex = re.search('launch app (.*)', input)
-        if reg_ex:
-            appname = reg_ex.group(1)
-            subprocess.Popen(appname)     
-        jasminResponse(_('I have launched the desired application'))
-
 # handle email sending
 def sendEmail():
     jasminResponse(_('Who is the recipient?'))
@@ -142,15 +105,6 @@ def sendEmail():
         jasminResponse(_("Email has been sent successfully."))
     else:
         jasminResponse(_("I don't know what you mean!"))
-
-def sendGreetings():
-    day_time = int(strftime('%H'))
-    if day_time < 12:
-        jasminResponse(_('Hello Sir. Good morning'))
-    elif 12 <= day_time < 20:
-        jasminResponse(_('Hello Sir. Good afternoon'))
-    else:
-        jasminResponse(_('Hello Sir. Good evening'))
 
 sendGreetings()
 # sayWeatherConditions(constants.DEFAULT_CITY)
