@@ -1,0 +1,138 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-09 17:46+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: setup.py:66
+msgid "open reddit"
+msgstr ""
+
+#: setup.py:73
+msgid "The Reddit content has been opened for you Sir."
+msgstr ""
+
+#: setup.py:75
+msgid "open website"
+msgstr ""
+
+#: setup.py:82
+msgid " has been opened for you Sir."
+msgstr ""
+
+#: setup.py:84
+msgid "launch app"
+msgstr ""
+
+#: setup.py:89
+msgid "Telegram ready as always."
+msgstr ""
+
+#: setup.py:100
+msgid "current weather"
+msgstr ""
+
+#: setup.py:108
+msgid "time"
+msgstr ""
+
+#: setup.py:111
+msgid "lock screen"
+msgstr ""
+
+#: setup.py:112
+msgid "screen was locked!"
+msgstr ""
+
+#: setup.py:114
+msgid "who are you"
+msgstr ""
+
+#: setup.py:115
+msgid "I'm Jasmin, your virtual assistant"
+msgstr ""
+
+#: setup.py:117
+msgid "shut down"
+msgstr ""
+
+#: setup.py:118
+msgid "Bye Sir. Have a nice day"
+msgstr ""
+
+#: setup.py:119
+msgid "Until next time Sir"
+msgstr ""
+
+#: setup.py:120
+msgid "Be nice, bye Sir!"
+msgstr ""
+
+#: setup.py:130
+#, python-format
+msgid ""
+"Current weather in %(city)s is %(status)s. The maximum temperature is "
+"%(temp_max)0.1f and the minimum temperature is %(temp_min)0.1f degree celcius"
+msgstr ""
+
+#: setup.py:140
+#, python-format
+msgid "Current time is %(hour)d hours %(mins)d minutes"
+msgstr ""
+
+#: setup.py:147
+msgid "Google Chrome was open for you Sir."
+msgstr ""
+
+#: setup.py:153
+msgid "I have launched the desired application"
+msgstr ""
+
+#: setup.py:162
+msgid "Closing Telegram Sir."
+msgstr ""
+
+#: setup.py:193
+msgid "Who is the recipient?"
+msgstr ""
+
+#: setup.py:196
+msgid "What should I say to him?"
+msgstr ""
+
+#: setup.py:198
+msgid "What is the subject?"
+msgstr ""
+
+#: setup.py:208
+msgid "Email has been sent successfully."
+msgstr ""
+
+#: setup.py:210
+msgid "I don't know what you mean!"
+msgstr ""
+
+#: setup.py:215
+msgid "Hello Sir. Good morning"
+msgstr ""
+
+#: setup.py:217
+msgid "Hello Sir. Good afternoon"
+msgstr ""
+
+#: setup.py:219
+msgid "Hello Sir. Good evening"
+msgstr ""
