@@ -2,6 +2,15 @@ from main import jasminResponse
 from pyowm import OWM
 from constants import OWM_KEY
 from locales import _
+import re
+
+def guessWeather(command):
+    reg_ex = re.search('current weather in (.*)', command)
+    if reg_ex:
+        city = reg_ex.group(1)
+        sayWeatherConditions(city)
+    else:
+        sayWeatherConditions("Malaga")
 
 def sayWeatherConditions(city):
     openWeatherMap = OWM(API_key=OWM_KEY)
